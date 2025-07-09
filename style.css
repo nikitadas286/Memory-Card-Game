@@ -1,0 +1,119 @@
+body {
+            background: linear-gradient(135deg, #e0e7ff 0%, #c3cfe2 100%);
+        }
+        .glass {
+            background: rgba(255,255,255,0.7);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.18);
+        }
+        .card {
+            perspective: 1000px;
+            cursor: pointer;
+            height: 100px;
+            width: 100px;
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(.4,2,.6,1);
+            transform-style: preserve-3d;
+        }
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
+        }
+        .card-front {
+            background: rgba(255,255,255,0.5);
+        }
+        .card-back {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            transform: rotateY(180deg);
+            font-size: 2.5rem;
+        }
+        .card.matched .card-inner {
+            box-shadow: 0 0 0 4px #38d9a9;
+            animation: pulse 0.7s;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 #38d9a9; }
+            70% { box-shadow: 0 0 0 8px #38d9a922; }
+            100% { box-shadow: 0 0 0 0 #38d9a9; }
+        }
+        @media (max-width: 640px) {
+            .card {
+                height: 56px !important;
+                width: 56px !important;
+                font-size: 1.2rem !important;
+            }
+            .card-front, .card-back {
+                font-size: 1.2rem !important;
+            }
+            .glass {
+                padding: 0.75rem !important;
+                font-size: 0.95rem !important;
+            }
+            .modal-content {
+                padding: 1.5rem !important;
+            }
+            .w-full.flex.flex-col.sm\:flex-row.justify-between.items-center.px-4.mb-6 {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.5rem !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            .flex.flex-wrap.justify-center.gap-4.mb-6 {
+                gap: 0.5rem !important;
+            }
+            #game-board {
+                gap: 0.5rem !important;
+            }
+            h1.text-3xl, h1.text-4xl {
+                font-size: 1.5rem !important;
+            }
+            .modal-content h2 {
+                font-size: 1.5rem !important;
+            }
+            .modal-content p, .modal-content button {
+                font-size: 1rem !important;
+            }
+        }
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 50;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+        }
+        .dark-mode {
+    background: linear-gradient(135deg, #232526 0%, #414345 100%) !important;
+}
+.dark-mode .glass {
+    background: rgba(35,37,38,0.8);
+    color: #ffe066;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+.dark-mode .card-front {
+    background: rgba(35,37,38,0.7);
+}
+.dark-mode .card-back {
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    color: #ffe066;
+}
